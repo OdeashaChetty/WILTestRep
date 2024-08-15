@@ -1,5 +1,84 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewBag.Title = "Payment History";
 }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="/css/donationhistorystyle.css" />
+</head>
+<body>
+    <div class="donation-history-container">
+      
+        <div class="tab-container">
+            <div class="tabs">
+                <button class="tablinks active" onclick="openTab(event, 'PaymentHistory')">Payment History</button>
+                <button class="tablinks" onclick="openTab(event, 'AccountSettings')">Account Settings</button>
+            </div>
+        </div>
+
+        
+        <div id="PaymentHistory" class="tab-content">
+            <div class="content">
+                <div class="column table-container">
+                    <table class="donation-table">
+                        <thead>
+                            <tr>
+                                <th>Date:</th>
+                                <th>Amount:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>03/08/2023</td>
+                                <td>R 13 500</td>
+                            </tr>
+                            <tr>
+                                <td>03/10/2023</td>
+                                <td>R 15 000</td>
+                            </tr>
+                            <tr>
+                                <td>25/11/2023</td>
+                                <td>R 10 500</td>
+                            </tr>
+                            <tr>
+                                <td>01/12/2023</td>
+                                <td>R 100 500</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="column image-container">
+                    <img src="~/images/honeypot.png" alt="Honey Pot Image">
+                </div>
+            </div>
+        </div>
+
+       
+        <div id="AccountSettings" class="tab-content" style="display: none;">
+            <div class="form-row">
+                <div>
+                    <label for="companyName">Company Name:</label>
+                    <input type="text" id="companyName" name="companyName">
+                </div>
+                <div>
+                    <label for="companyEmail">Company Email:</label>
+                    <input type="email" id="companyEmail" name="companyEmail">
+                </div>
+            </div>
+            <div class="form-row">
+                <div>
+                    <label for="companyPhone">Company Telephone:</label>
+                    <input type="tel" id="companyPhone" name="companyPhone">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="/js/main.js"></script>
+</body>
+</html>

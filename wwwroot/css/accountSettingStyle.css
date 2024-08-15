@@ -1,0 +1,89 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background: url('../images/honeycomb1.png') no-repeat center center fixed;
+    background-size: 150%;
+    background-size: cover;
+}
+
+.account-setting-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(33, 59, 42, 0.6);
+    margin: 60px auto 40px auto;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 1200px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%; /* Full-width tabs */
+    background: #213B2A; /* Green background for tabs */
+    border-radius: 8px 8px 0 0; /* Rounded corners on top */
+    padding: 5px; /* Space around tabs */
+}
+
+.tablinks {
+    background-color: #213B2A; /* Green color for tabs */
+    color: white;
+    padding: 10px 20px; /* Shorter rectangles */
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 0 5px; /* Space between tabs */
+}
+
+    .tablinks.active {
+        background-color: #1a2a1a; /* Darker green for active tab */
+    }
+
+    .tablinks:hover {
+        background-color: #1a2a1a; /* Darker green for hover effect */
+    }
+
+/* Content styling */
+.content {
+    display: flex;
+    flex-direction: column; /* Stack form elements vertically */
+    background-color: #f5f5f5; /* Grey block behind form */
+    border-radius: 8px;
+    padding: 20px;
+    gap: 20px; /* Space between form sections */
+}
+
+/* Form Row Styling */
+.form-row {
+    display: flex;
+    flex-direction: column; /* Stack form elements vertically */
+    gap: 20px; /* Increased space between form rows */
+}
+
+    /* Individual Form Elements */
+    .form-row div {
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Space below each form element */
+    }
+
+label {
+    display: block; /* Ensure labels are on a new line */
+    margin-bottom: 5px; /* Space below label */
+}
+
+input {
+    width: 100%; /* Make inputs take the full width of the container */
+    padding: 10px; /* Padding inside inputs */
+    border: 1px solid #ddd; /* Border for inputs */
+    border-radius: 4px; /* Rounded corners for inputs */
+}

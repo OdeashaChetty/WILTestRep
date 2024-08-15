@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Account Settings";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="/css/accountsettingsstyle.css" /> <!-- Updated CSS file link -->
+</head>
+<body>
+    <div class="account-setting-container">
+        <div class="tabs">
+            <button class="tablinks active" onclick="openTab(event, 'AccountSettings')">Account Settings</button>
+            <button class="tablinks" onclick="openTab(event, 'PaymentHistory')">Payment History</button>
+        </div>
+
+        <div id="AccountSettings" class="tab-content">
+            <div class="form-row">
+                <div>
+                    <label for="companyName">Company Name:</label>
+                    <input type="text" id="companyName" name="companyName">
+                </div>
+                <div>
+                    <label for="companyEmail">Company Email:</label>
+                    <input type="email" id="companyEmail" name="companyEmail">
+                </div>
+            </div>
+            <div class="form-row">
+                <div>
+                    <label for="companyPhone">Company Telephone:</label>
+                    <input type="tel" id="companyPhone" name="companyPhone">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
