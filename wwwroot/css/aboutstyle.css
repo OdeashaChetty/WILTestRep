@@ -128,27 +128,27 @@ p {
         font-weight: bold;
     }
 
-/* Media Query for Mobile View */
+
 @media (max-width: 768px) {
     .content-container {
-        display: block; /* Stack elements vertically */
-        text-align: center; /* Center the text */
+        display: block; 
+        text-align: center;
     }
 
     .text-container,
     .section-image {
-        max-width: 100%; /* Ensure full width on mobile */
-        margin: 0 auto; /* Center the elements */
-        margin-bottom: 20px; /* Add space between the elements */
+        max-width: 100%; 
+        margin: 0 auto; 
+        margin-bottom: 20px; 
     }
 
         .section-image img {
-            width: 100%; /* Ensure images take full width */
+            width: 100%;
             height: auto;
         }
 
     p {
-        font-size: 16px; /* Slightly smaller text for mobile */
+        font-size: 16px;
     }
 }
 
