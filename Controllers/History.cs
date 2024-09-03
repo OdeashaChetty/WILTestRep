@@ -8,5 +8,9 @@ namespace WILTestDesignSpace.Controllers
         {
             return View();
         }
+        public IActionResult Certificate()
+        {
+            return View();
+        }
     }
 }
