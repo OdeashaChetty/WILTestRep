@@ -4,7 +4,7 @@ namespace WIL_Project.Controllers
 {
     public class Projects : Controller
     {
-        public IActionResult Index()
+        public IActionResult ViewProjects()
         {
             return View();
         }

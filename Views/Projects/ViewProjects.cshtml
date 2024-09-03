@@ -1,5 +1,263 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Organizations</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('/images/honeycomb1.png'); /* Update background image */
+            background-size: cover; /* Ensures the image covers the whole background */
+            background-position: center; /* Centers the background image */
+            background-repeat: no-repeat; /* Prevents the background image from repeating */
+        }
+
+        .header {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: #213B2A;
+        }
+
+        .header h2 {
+            font-size: 1.5rem;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .recyclerview {
+            display: flex;
+            flex-direction: column; /* Stack items vertically by default */
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .banner {
+            background-color: #e9e9e9;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            height: 40vh;
+            border: 3px solid #213B2A; /* Border with the same shade of green */
+            position: relative;
+        }
+
+        .banner-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .green-container {
+            display: flex;
+            align-items: center;
+            background-color: #213B2A;
+            padding: 30px 20px;
+            position: absolute;
+            top: 50%;
+            left: 15%; /* Adjusted to make room for the logo */
+            transform: translateY(-50%);
+            width: 70%;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            color: white;
+            margin-left: 120px; /* Ensure space for the logo */
+        }
+
+        .org-logo {
+            width: 150px; /* Increased size of the logo */
+            height: auto;
+            margin-right: 20px;
+            object-fit: contain; /* Ensures logo maintains its aspect ratio */
+            position: absolute; /* Position the logo outside of the green container */
+            left: 10%; /* Adjust this value if needed to position the logo */
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .org-details {
+            display: flex;
+            flex-direction: column;
+            margin-left: 120px; /* Ensure space for the logo */
+        }
+
+        .org-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .org-description {
+            font-size: 0.9rem; /* Smaller font size */
+            margin-bottom: 10px;
+            line-height: 1.5; /* Improves readability for longer paragraphs */
+        }
+
+        .org-goal {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Responsive Styles */
+        @@media (max-width: 1200px) {
+            .recyclerview {
+                flex-direction: row; /* Horizontal scrolling on medium screens */
+                overflow-x: auto; /* Enable horizontal scrolling */
+                gap: 20px;
+                scroll-snap-type: x mandatory; /* Optional: Snapping effect */
+            }
+
+            .banner {
+                flex: 0 0 auto; /* Prevents the banners from shrinking */
+                scroll-snap-align: start; /* Optional: Snapping effect */
+                width: 80vw; /* Adjust the width for horizontal scrolling */
+                height: auto; /* Adjust height for better visibility */
+            }
+
+            .green-container {
+                left: 5%; /* Adjusted for medium-sized screens */
+                width: 90%; /* Adjusted width for medium-sized screens */
+                margin-left: 80px; /* Reduced margin for medium-sized screens */
+            }
+
+            .org-logo {
+                width: 120px; /* Adjusted logo size for medium screens */
+                left: 5%; /* Adjusted position for medium screens */
+            }
+
+            .org-details {
+                margin-left: 80px; /* Reduced margin for medium screens */
+            }
+        }
+
+        @@media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem; /* Smaller font size for smaller screens */
+            }
+
+            .header h2 {
+                font-size: 1.2rem; /* Smaller font size for smaller screens */
+            }
+
+            .banner {
+                height: 30vh; /* Reduced height for smaller screens */
+            }
+
+            .green-container {
+                left: 5%; /* Adjusted for smaller screens */
+                width: 90%; /* Wider container for smaller screens */
+                padding: 15px; /* Reduced padding for smaller screens */
+            }
+
+            .org-logo {
+                width: 100px; /* Adjusted logo size for smaller screens */
+                left: 5%; /* Adjusted position for smaller screens */
+            }
+
+            .org-details {
+                margin-left: 60px; /* Reduced margin for smaller screens */
+            }
+
+            .org-name {
+                font-size: 1.2rem; /* Smaller font size for smaller screens */
+            }
+
+            .org-description {
+                font-size: 0.8rem; /* Smaller font size for smaller screens */
+            }
+
+            .org-goal {
+                font-size: 1rem; /* Smaller font size for smaller screens */
+            }
+        }
+
+        @@media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.2rem; /* Even smaller font size for very small screens */
+            }
+
+            .header h2 {
+                font-size: 1rem; /* Even smaller font size for very small screens */
+            }
+
+            .banner {
+                height: 25vh; /* Further reduced height for very small screens */
+            }
+
+            .green-container {
+                left: 0; /* Adjusted for very small screens */
+                width: 100%; /* Full width for very small screens */
+                padding: 10px; /* Further reduced padding for very small screens */
+            }
+
+            .org-logo {
+                width: 80px; /* Smallest logo size */
+                left: 5%; /* Adjusted position for very small screens */
+            }
+
+            .org-details {
+                margin-left: 40px; /* Further reduced margin for very small screens */
+            }
+
+            .org-name {
+                font-size: 1rem; /* Smaller font size for very small screens */
+            }
+
+            .org-description {
+                font-size: 0.7rem; /* Smaller font size for very small screens */
+            }
+
+            .org-goal {
+                font-size: 0.9rem; /* Smaller font size for very small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Available NPOs awaiting donation:</h1>
+        <h2>These organizations have submitted their proposals</h2>
+    </div>
+
+    <div class="recyclerview">
+        <!-- Banner for CANSA -->
+        <div class="banner">
+            <img src="~/images/GreenBanner.png" alt="Green Banner" class="banner-image">
+            <img src="~/images/Logo.png" alt="Organization Logo" class="org-logo">
+            <div class="green-container">
+                <div class="org-details">
+                    <h2 class="org-name">CANSA -
+                    <h2 class="org-name">CANSA - Cancer Association of South Africa</h2>
+                    <p class="org-description">
+                        Its mission as a non-profit fighting cancer is to enable research, educate the public, and advocate for and support all people affected by cancer. CANSA has been serving South Africans for decades and continues to be a beacon of hope for those affected by cancer. With a nationwide reach, CANSA offers various programs including patient care, education, and advocacy. By donating to CANSA, you help fund critical research and provide support to cancer patients and their families across the country.
+                    </p>
+                    <p class="org-goal">Goal Amount: R 40 000</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner for Peace Players South Africa -->
+        <div class="banner">
+            <img src="~/images/GreenBanner.png" alt="Green Banner" class="banner-image">
+            <img src="~/images/Logo.png" alt="Organization Logo" class="org-logo">
+            <div class="green-container">
+                <div class="org-details">
+                    <h2 class="org-name">Peace Players South Africa</h2>
+                    <p class="org-description">
+                        Working in the communities, PeacePlayers South Africa has built 33 basketball courts, trained more than 400 youth mentors as peer educators and coaches. The organization’s programs foster unity and peace among youth from diverse backgrounds through the medium of sports, especially basketball. They have positively impacted thousands of young lives, promoting leadership, teamwork, and cross-cultural understanding. Your support can help expand these programs to more communities in need.
+                    </p>
+                    <p class="org-goal">Goal Amount: R 50 000</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional banners can be added here -->
+    </div>
+</body>
+</html>
