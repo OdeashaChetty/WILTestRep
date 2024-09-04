@@ -1,9 +1,26 @@
+using Microsoft.EntityFrameworkCore;
+using WILTestDesignSpace;
+using WILTestDesignSpace.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//added in - used for session strings 
+builder.Services.AddMvc();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSession();
+
+string connectionString = Environment.GetEnvironmentVariable("bumblebeeconnstring");
+
+
+builder.Services.AddDbContext<BumbleBeesContext>(options =>
+    options.UseSqlServer(connectionString));
 var app = builder.Build();
+
+app.UseSession();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
