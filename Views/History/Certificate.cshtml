@@ -1,5 +1,91 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Certificate";
 }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - WIL_Project</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WIL_Project.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            background-color: #213B2A; /* Set the background color */
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ensure the container takes up the full viewport height */
+            padding: 20px;
+        }
+
+        .white-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 20px; /* Increased border-radius for more rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%; /* Adjust the width as needed */
+            max-width: 1200px; /* Maximum width of the container */
+            text-align: center;
+            position: relative; /* Needed for positioning the banner */
+            overflow: hidden; /* Ensure child elements don’t spill out of the rounded corners */
+            min-height: 70vh; /* Increase the minimum height */
+        }
+
+        .banner {
+            width: 100%;
+            height: 250px; /* Fixed height for the banner */
+            background-color: #f4f4f4; /* Background color for the banner, change as needed */
+            position: relative;
+            z-index: 1; /* Ensure it stays above other content */
+        }
+
+            .banner img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; /* Ensure the image covers the banner area */
+            }
+
+        .certificate-container {
+            margin-top: 40px; /* Space above the certificate */
+            text-align: center; /* Center the content */
+        }
+
+            .certificate-container h2 {
+                margin-bottom: 20px; /* Space below the heading */
+                font-size: 2rem; /* Adjust font size as needed */
+                color: #000000; /* Text color */
+            }
+
+            .certificate-container iframe {
+                width: 100%;
+                height: 600px; /* Adjust height as needed */
+                border: none; /* Remove border */
+            }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <div class="white-container">
+            <div class="banner">
+                <img src="~/images/banner.png" alt="Banner Image" />
+            </div>
+            <div class="certificate-container">
+                <h2>View the Donation Receipt</h2>
+                <iframe src="~/certFiles/18ATest.pdf" title="Certificate"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
