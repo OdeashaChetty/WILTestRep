@@ -16,7 +16,19 @@ namespace WIL_Project.Controllers
 
         public IActionResult ViewProjects()
         {
-            return View();
+            // Fetch data directly in the controller method
+            var npos = (from org in _context.Organisations
+                        join proj in _context.Projects
+                        on org.OrganisationRegNo equals proj.OrganisationRegNo
+                        where proj.Active == true // Assuming you only want active projects
+                        select new NPO
+                        {
+                            OrganisationName = org.DirectorFullName, // Assuming Organisation Name is Director's FullName
+                            Motivation = proj.ProjectDescription,
+                            AmountRequested = proj.Amount
+                        }).ToList();
+
+            return View(npos);
         }
     }
 }
